@@ -1,0 +1,14 @@
+<div>
+  <mat-toolbar color="primary">
+    <div class="flex justify-between w-[80%] mx-auto">
+      <div class="flex-1 flex items-center">
+        <mat-icon>gamepad</mat-icon>
+        <span class="mx-2">Bankam</span>
+      </div>
+      <div class="flex gap-3">
+        <app-navbar-item *ngFor="let item of navbarItems" [navItem]="item">
+        </app-navbar-item>
+      </div>
+    </div>
+  </mat-toolbar>
+</div>
