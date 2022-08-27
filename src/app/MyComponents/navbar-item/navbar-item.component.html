@@ -1,0 +1,9 @@
+<button
+  mat-raised-button
+  [color]="rla.isActive ? 'accent' : 'basic'"
+  [routerLink]="navItem.href"
+  routerLinkActive="active"
+  #rla="routerLinkActive"
+>
+  {{ navItem.title }}
+</button>
