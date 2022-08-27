@@ -13,6 +13,7 @@ import { FooterComponent } from './MyComponents/footer/footer.component';
 import { StoreModule } from '@ngrx/store';
 import { transactionReducer } from './state/transaction.reducer';
 import { TransactionsFormComponent } from './MyComponents/transactions-form/transactions-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { TransactionsFormComponent } from './MyComponents/transactions-form/tran
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({ balance: transactionReducer }, {}),
   ],
   providers: [],
