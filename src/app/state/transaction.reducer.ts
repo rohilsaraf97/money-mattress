@@ -6,6 +6,11 @@ export const initialState = 10000;
 
 export const transactionReducer = createReducer(
   initialState,
-  on(debit, (state, { amount }) => state - amount),
+  on(debit, (state, { amount }) => {
+    if (amount < state) {
+      return state - amount;
+    }
+    return state;
+  }),
   on(credit, (state, { amount }) => state + amount)
 );
