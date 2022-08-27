@@ -2,13 +2,13 @@
   <mat-toolbar color="primary">
     <div class="flex justify-between w-[80%] mx-auto">
       <div
-        class="flex-1 flex items-center text-3xl cursor-pointer"
+        class="flex-1 flex items-center text-3xl cursor-pointer md:justify-start mx-auto justify-center"
         routerLink="/home"
       >
         <mat-icon>gamepad</mat-icon>
         <span class="mx-2">Bankam</span>
       </div>
-      <div class="flex gap-3">
+      <div class="md:flex gap-3 hidden">
         <app-navbar-item *ngFor="let item of navbarItems" [navItem]="item">
         </app-navbar-item>
       </div>
