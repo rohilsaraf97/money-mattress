@@ -1,0 +1,3 @@
+.mat-header-cell {
+  @apply bg-purple-100 text-black font-bold text-sm;
+}

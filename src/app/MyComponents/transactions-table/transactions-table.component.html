@@ -1,0 +1,53 @@
+<div class="shadow-purple-200 shadow-lg my-10 rounded-lg overflow-hidden">
+  <table mat-table [dataSource]="dataSource" class="w-full">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="party">
+      <th mat-header-cell *matHeaderCellDef>Party Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.partyName }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">
+        <span
+          [class]="
+            element.type == 'Debit'
+              ? 'bg-green-200 text-green-600'
+              : 'bg-red-200 text-red-700'
+          "
+          class="px-2 py-1 rounded-md w-full"
+        >
+          {{ element.type }}
+        </span>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Amount</th>
+      <td mat-cell *matCellDef="let element">$ {{ element.amount }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of transactions"
+  >
+  </mat-paginator>
+</div>
