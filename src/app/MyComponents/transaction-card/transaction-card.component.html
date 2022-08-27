@@ -1,0 +1,19 @@
+<mat-card class="h-full">
+  <div class="text-center flex flex-col flex-1 gap-2 border-b-2 pb-3">
+    <span class="text-2xl font-bold"> Phineas Flynn </span>
+    <span class="text-gray-600 font-bold"> Platinum Plan </span>
+  </div>
+  <div class="h-40 flex items-center justify-center">
+    <mat-card-content>
+      <span class="text-3xl text-center font-bold">
+        $ {{ balance$ | async }}
+      </span>
+    </mat-card-content>
+  </div>
+
+  <mat-card-actions>
+    <button mat-flat-button color="primary" class="text-lg w-full">
+      Make Transaction
+    </button>
+  </mat-card-actions>
+</mat-card>
