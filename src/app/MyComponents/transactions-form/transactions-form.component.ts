@@ -3,7 +3,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { credit, debit } from 'src/app/state/transaction.actions';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+export interface Transaction {
+  partyName: string;
+  position: number;
+  type: string;
+  amount: number;
+  date: string;
+}
 
 @Component({
   selector: 'app-transactions-form',
@@ -17,14 +25,15 @@ export class TransactionsFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<{ balance: number }>,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.balance$ = store.select('balance');
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      Name: [null, [Validators.required, Validators.minLength(10)]],
+      Name: [null, [Validators.required, Validators.minLength(5)]],
 
       Type: [
         null,
@@ -40,6 +49,19 @@ export class TransactionsFormComponent implements OnInit {
     } else {
       this.store.dispatch(debit({ amount: form.value.Amount }));
     }
-    this.router.navigate(['home']);
+
+    const newEntry = {
+      partyName: form.value.Name,
+      amount: form.value.Amount,
+      type: form.value.Type,
+      position: 1,
+      date: new Date().toLocaleDateString('en-US'),
+    };
+    let tData = JSON.parse(localStorage.getItem('tData')!);
+    tData = [newEntry, ...tData].map((entry, index) => {
+      return { ...entry, position: index + 1 };
+    });
+    localStorage.setItem('tData', JSON.stringify(tData));
+    this.router.navigate(['/home']);
   }
 }

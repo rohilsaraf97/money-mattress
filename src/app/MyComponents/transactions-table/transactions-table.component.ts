@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-transactions-table',
@@ -9,7 +10,9 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class TransactionsTableComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'party', 'type', 'amount', 'date'];
-  dataSource = new MatTableDataSource<Transaction>(transactionData);
+  dataSource = new MatTableDataSource<Transaction>(
+    JSON.parse(localStorage.getItem('tData')!)
+  );
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -49,3 +52,5 @@ const transactionData: Transaction[] = transactions.map(
     };
   }
 );
+
+localStorage.setItem('tData', JSON.stringify(transactionData));

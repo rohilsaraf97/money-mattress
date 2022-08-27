@@ -1,60 +1,85 @@
-<mat-card>
-  <div class="w-full">
-    <form
-      [formGroup]="form"
-      (ngSubmit)="saveDetails(form)"
-      class="flex flex-col"
-    >
-      <mat-form-field appearance="standard">
-        <mat-label>Name</mat-label>
-        <input
-          matInput
-          maxlength="15"
-          inputmode="tel"
-          placeholder="Type party name"
-          formControlName="Name"
-          #nameInput
-        />
-        <mat-hint>Mini character 10: {{ nameInput.value.length }}/10</mat-hint>
-        <mat-error>Name is required</mat-error>
-        <mat-error *ngIf="form.controls['Name'].errors?.['minlength']">
-          Please enter more than 10 character
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="standard">
-        <mat-label>Amount</mat-label>
-        <input
-          matInput
-          type="number"
-          inputmode="tel"
-          placeholder="Type amount"
-          formControlName="Amount"
-          #amountInput
-        />
-
-        <mat-error>Amount is required</mat-error>
-      </mat-form-field>
-
-      <div class="mt-3">
-        <div class="my-3">
-          <mat-label>Type</mat-label>
-        </div>
-        <mat-radio-group formControlName="Type" class="flex flex-col gap-4">
-          <mat-radio-button value="Credit">Credit</mat-radio-button>
-          <mat-radio-button value="Debit">Debit</mat-radio-button>
-        </mat-radio-group>
-      </div>
-
-      <div mat-dialog-actions align="end">
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          [disabled]="!form.valid"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
+<div class="md:grid grid-cols-9 gap-5 flex flex-col">
+  <div class="col-span-5 bg-purple-50 rounded-md shadow-md relative -z-10">
+    <img
+      src="./../../../assets/images/hero.jpg"
+      class="object-fill opacity-20 absolute h-full -z-10"
+      alt=""
+    />
+    <div class="p-10 z-10 flex flex-col gap-3">
+      <span class="text-black font-bold text-3xl"
+        >Transferring money has never been easier!</span
+      >
+      <span class="text-lg">
+        Just fill the required fields and enjoy your hasslefree transaction!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, rerum.
+      </span>
+      <span class="italic text-lg">
+        (Make sure you have enough funds left)
+      </span>
+    </div>
   </div>
-</mat-card>
+  <div class="col-span-4">
+    <mat-card>
+      <div class="w-full">
+        <form
+          [formGroup]="form"
+          (ngSubmit)="saveDetails(form)"
+          class="flex flex-col"
+        >
+          <mat-form-field appearance="standard">
+            <mat-label>Name</mat-label>
+            <input
+              matInput
+              maxlength="15"
+              inputmode="tel"
+              placeholder="Type party name"
+              formControlName="Name"
+              #nameInput
+            />
+            <mat-hint
+              >Mini character 10: {{ nameInput.value.length }}/10</mat-hint
+            >
+            <mat-error>Name is required</mat-error>
+            <mat-error *ngIf="form.controls['Name'].errors?.['minlength']">
+              Please enter more than 10 character
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="standard">
+            <mat-label>Amount</mat-label>
+            <input
+              matInput
+              type="number"
+              inputmode="tel"
+              placeholder="Type amount"
+              formControlName="Amount"
+              #amountInput
+            />
+
+            <mat-error>Amount is required</mat-error>
+          </mat-form-field>
+
+          <div class="mt-3">
+            <div class="my-3">
+              <mat-label>Type</mat-label>
+            </div>
+            <mat-radio-group formControlName="Type" class="flex flex-col gap-4">
+              <mat-radio-button value="Credit">Credit</mat-radio-button>
+              <mat-radio-button value="Debit">Debit</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div mat-dialog-actions align="end">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!form.valid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>
